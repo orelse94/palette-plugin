@@ -31,7 +31,7 @@ var paletteButton = {
           var $http = prism.$injector.get('$http');
           var image = document.getElementById('paletteFile').files[0];
           if (image === null || image === undefined || name === undefined) {
-            if (name === undefined) {
+            if (name === undefined || name === null) {
               console.log('no name');
               document.getElementById('noName').className = 'noImage';
               setTimeout(function(){
