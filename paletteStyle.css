@@ -1,0 +1,108 @@
+.form-style {
+  /*border-top: 20px;
+  border-style: black groove;*/
+  width: 250px;
+  height: 300px;
+  margin-left: 2px;
+  }
+
+
+.header-lbl {
+  display: block;
+  /*border: none none none 2px;*/
+  font-family: opensansregular;
+  font-weight: bold;
+  color: black;
+  font-size: 16px;
+
+}
+
+.input-palette-name {
+  font-family: opensansregular;
+  color: grey;
+  width: 90%;
+  margin: 10px;
+  display: block;
+
+}
+
+
+.obj-palette {
+  padding: 10px;
+
+}
+
+
+.palette-lbl {
+  font-family: opensansregular;
+  font-weight: 100;
+  font-size: 13px;
+  display: inline-block;
+  color: gray;
+  vertical-align: middle;
+
+
+  }
+
+#paletteFile {
+  display: none;
+}
+
+.palette-button {
+  display: block;
+  width: 90%;
+  margin: 10px;
+  background: #6ee555;
+  font-family: opensansregular;
+  font-weight: 400;
+  font-size: 13px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #fff;
+  z-index: 1;
+  margin-right: 10px;
+  overflow: hidden;
+  padding: 6px 13px;
+  align-items: flex-start;
+  text-align: center;
+
+}
+
+.palette-checkbox {
+  width: 16px;
+  height: 16px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAABQCAYAAAAQq/UNAAAAGXRFW…xdmePgElyB/QFTaSdX+vz0QJ4y3WGcwbjL3s5e1M+BPwUYAMOrQNUWxZEEAAAAAElFTkSuQmCC);
+  margin-right: 9px;
+  background-repeat: no-repeat;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.noImage {
+  color: red;
+  margin-left: 35px;
+  margin-right: 35px;
+
+}
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}

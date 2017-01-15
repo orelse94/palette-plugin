@@ -1,0 +1,13 @@
+{
+	name: "paletteGen",
+	source: [
+
+		"color-thief.min.js",
+		"paletteGen.js"
+	],
+
+	style: [
+		"paletteStyle.css"
+
+	]
+}
