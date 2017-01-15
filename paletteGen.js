@@ -36,12 +36,12 @@ var paletteButton = {
               document.getElementById('noName').className = 'noImage';
               setTimeout(function(){
                 document.getElementById('noName').className = 'invisible';},2000);
-          }
+          } else if (image === null || image === undefined) {
             console.log('no image');
             document.getElementById('noImageError').className = 'noImage';
             setTimeout(function(){
               document.getElementById('noImageError').className = 'invisible';},2000);
-
+          }
 
           } else {
             var reader  = new FileReader();
