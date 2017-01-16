@@ -56,7 +56,7 @@ var paletteButton = {
 
         }
       },
-      templateUrl: '/plugins/paletteOfficial/popupHtml.html?what',
+      templateUrl: '/plugins/paletteOfficial/popupHtml.html',
     });
   },
   title: 'Palette By Image!',
