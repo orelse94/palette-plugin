@@ -28,7 +28,10 @@
                   <label for="paletteFile" class="palette-button" >
                    Choose an Image
                  </label>
-                  <input id="paletteFile" type="file"  accept="image/*" app-filereader />
+                  <input id="paletteFile" type="file"  accept="image/*" data-ng-model="in.filush" app-filereader />
+
+
+                  </div>
 
               </div>
               <div>
@@ -36,9 +39,11 @@
                   Or Insert a URL:
                 </div>
                 <input class="input-palette-name" id="paletteUrl" type="text" data-ng-model="in.imgUrl"/>
-                
+                <button id="palettePre" data-ng-click="in.imgWatcher(in.filush,in.imgUrl)"> Preview Palette </button>
+                <div id="colorsPreview">
 
               </div>
+
       </div>
 
 
