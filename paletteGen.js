@@ -148,7 +148,7 @@ var paletteButton = {
           },
 
       },
-      templateUrl: '/plugins/paletteOfficial/popupHtml.html',
+      templateUrl: '/plugins/palettePlugin/popupHtml.html',
     });
   },
   title: 'Palette By Image!',
