@@ -12,7 +12,8 @@ var paletteButton = {
     $dom.modal({
       scope:{
         postPalette: function(name,imgUrl) {
-          console.log(imgUrl);
+          // console.log(imgUrl);
+
           var colorThief = new ColorThief();
           var $http = prism.$injector.get('$http');
           var image = document.getElementById('paletteFile').files[0];
@@ -46,8 +47,25 @@ var paletteButton = {
                 }, function errorCallback(response) {
                   return response;
                 });
+                var dashId = prism.activeDashboard.oid;
+                var updateDashPalette = {'style' : {'name' : name, 'palette' : {'colors' : hexColors}}};
 
-                $windowStack.closeAllWindowsAbove();
+                $http({
+                  method: 'PATCH',
+                  url: 'http://localhost:8081/api/v1/dashboards/'+dashId,
+                  data: updateDashPalette
+                }).then(function successCallback(response) {
+                  console.log('patch!');
+                  console.log(response);
+                  window.location.reload();
+                  return response;
+                }, function errorCallback(response) {
+                  return response;
+                });
+
+
+
+                // $windowStack.closeAllWindowsAbove();
 
               };
               img.src = src;
