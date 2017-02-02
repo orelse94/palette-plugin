@@ -12,8 +12,7 @@ var paletteButton = {
     $dom.modal({
       scope:{
         postPalette: function(name,imgUrl) {
-          // console.log(imgUrl);
-
+          
           var colorThief = new ColorThief();
           var $http = prism.$injector.get('$http');
           var image = document.getElementById('paletteFile').files[0];
@@ -32,10 +31,15 @@ var paletteButton = {
             var imgCycle = function (src) {
               var img = document.createElement('img');
               img.onload = function() {
+
                 var colorsArray = colorThief.getPalette(img,8);
+
                 var hexColors = colorsArray.map(function(x){
+
                   var newColor = new Color(x[0],x[1],x[2]);
+
                   return newColor.toHex();});
+
                 var paletteObj = {'name': name, 'colors': hexColors,  'isDefault': true, 'sortOrder': 0};
 
                 $http({
@@ -55,8 +59,6 @@ var paletteButton = {
                   url: 'http://localhost:8081/api/v1/dashboards/'+dashId,
                   data: updateDashPalette
                 }).then(function successCallback(response) {
-                  console.log('patch!');
-                  console.log(response);
                   window.location.reload();
                   return response;
                 }, function errorCallback(response) {
@@ -65,12 +67,12 @@ var paletteButton = {
 
 
 
-                // $windowStack.closeAllWindowsAbove();
-
               };
               img.src = src;
 
             };
+
+
             if (imgUrl) {
               imgCycle(imgUrl);
             } else {
@@ -81,7 +83,7 @@ var paletteButton = {
 
             };
 
-            reader.readAsDataURL(image);
+              reader.readAsDataURL(image);
           }
 
           }
