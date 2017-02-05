@@ -28,17 +28,30 @@ var paletteButton = {
 
                 return newColor.toHex();});
 
+              var parentPalette = document.getElementById('colorsPreview');
+
+              var previewPalette = parentPalette.childNodes[0];
+
+              while (previewPalette) {
+                console.log({previewPalette});
+                parentPalette.removeChild(parentPalette.firstChild);
+                previewPalette = parentPalette.childNodes[0];
+              }
+              // console.log(previewPalette);
+              // if (previewPalette) {parentPalette.removeChild(previewPalette);}
+
+
               hexColors.forEach(function(hex) {
                 console.log('color');
-                var bla = document.getElementById('colorsPreview');
                 var viewHex = document.createElement('div');
+                viewHex.className = 'hexDivs';
                 // hex.style.backgroundColor = hex;
-                bla.appendChild(viewHex);
+                parentPalette.appendChild(viewHex);
                 viewHex.style.backgroundColor = hex;
-                viewHex.style.width = '30px';
-                viewHex.style.height = '30px';
-                viewHex.style.display = 'inline-block';
-                viewHex.style.border = '1px solid white';
+                // viewHex.style.width = '30px';
+                // viewHex.style.height = '30px';
+                // viewHex.style.display = 'inline-block';
+                // viewHex.style.border = '1px solid white';
 
 
               });
@@ -54,7 +67,7 @@ var paletteButton = {
               imgCycleW(e.target.result);
             };
 
-              reader.readAsDataURL(image);
+            reader.readAsDataURL(image);
           } else {
             imgCycleW(imgUrl);
           }
