@@ -13,9 +13,6 @@ var paletteButton = {
       scope:{
 
         imgWatcher: function(filush,imgUrl) {
-          // console.log(filush);
-          // console.log(imgUrl);
-          console.log('change!!');
           var image = document.getElementById('paletteFile').files[0];
           var img = document.createElement('img');
           var colorThief = new ColorThief();
@@ -37,21 +34,13 @@ var paletteButton = {
                 parentPalette.removeChild(parentPalette.firstChild);
                 previewPalette = parentPalette.childNodes[0];
               }
-              // console.log(previewPalette);
-              // if (previewPalette) {parentPalette.removeChild(previewPalette);}
-
 
               hexColors.forEach(function(hex) {
                 console.log('color');
                 var viewHex = document.createElement('div');
                 viewHex.className = 'hexDivs';
-                // hex.style.backgroundColor = hex;
                 parentPalette.appendChild(viewHex);
                 viewHex.style.backgroundColor = hex;
-                // viewHex.style.width = '30px';
-                // viewHex.style.height = '30px';
-                // viewHex.style.display = 'inline-block';
-                // viewHex.style.border = '1px solid white';
 
 
               });
@@ -101,15 +90,7 @@ var paletteButton = {
                   var newColor = new Color(x[0],x[1],x[2]);
 
                   return newColor.toHex();});
-
-                // hexColors.forEach(function(hex) {
-                //   console.log("color");
-                //   var viewHex = document.createElement(hex);
-                //   // hex.style.backgroundColor = hex;
-                //   document.body.appendChild(viewHex);
-                //   hex.style.backgroundColor = hex;
-                // });
-                var paletteObj = {'name': name, 'colors': hexColors,  'isDefault': true, 'sortOrder': 0};
+                var paletteObj = {'name': name, 'colors': hexColors,  'isDefault': true, 'sortOrder': 0, 'systemDefault': true};
 
 
                 $http({
@@ -122,7 +103,7 @@ var paletteButton = {
                   return response;
                 });
                 var dashId = prism.activeDashboard.oid;
-                var updateDashPalette = {'style' : {'name' : name, 'palette' : {'colors' : hexColors}}};
+                var updateDashPalette = {'style' : {'name' : name, 'palette' : paletteObj}};
 
                 $http({
                   method: 'PATCH',
