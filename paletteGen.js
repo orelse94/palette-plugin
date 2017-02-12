@@ -90,7 +90,7 @@ var paletteButton = {
                   var newColor = new Color(x[0],x[1],x[2]);
 
                   return newColor.toHex();});
-                var paletteObj = {'name': name, 'colors': hexColors,  'isDefault': true, 'sortOrder': 0, 'systemDefault': true};
+                var paletteObj = {'name': name, 'colors': hexColors,  'isDefault': false, 'sortOrder': 0, 'systemDefault': true};
 
 
                 $http({
