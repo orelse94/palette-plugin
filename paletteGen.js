@@ -84,6 +84,7 @@ var paletteButton = {
           } else {
             var imgCycle = function (src) {
               var img = document.createElement('img');
+              img.crossOrigin = 'Anonymous';
               img.onload = function() {
 
                 var colorsArray = colorThief.getPalette(img,8);
