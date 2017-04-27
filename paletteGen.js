@@ -15,6 +15,8 @@ var paletteButton = {
         imgWatcher: function(filush,imgUrl) {
           var image = document.getElementById('paletteFile').files[0];
           var img = document.createElement('img');
+          img.crossOrigin = 'Anonymous';
+          console.log({img});
           var colorThief = new ColorThief();
           var imgCycleW = function (src) {
             img.onload = function() {
@@ -142,7 +144,7 @@ var paletteButton = {
           },
 
       },
-      templateUrl: '/plugins/palettePlugin/popupHtml.html',
+      templateUrl: '/plugins/palette-plugin/popupHtml.html',
     });
   },
   title: 'Palette By Image!',
