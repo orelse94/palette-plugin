@@ -14,7 +14,6 @@
 
 .header-lbl {
   display: block;
-  font-family: opensansregular;
   font-weight: bold;
   color: black;
   font-size: 16px;
@@ -22,7 +21,6 @@
 }
 
 .input-palette-name {
-  font-family: opensansregular;
   color: grey;
   width: 90%;
   margin: 10px;
@@ -38,7 +36,6 @@
 
 
 .palette-lbl {
-  font-family: opensansregular;
   font-weight: 100;
   font-size: 13px;
   display: inline-block;
@@ -56,8 +53,7 @@
   display: block;
   width: 90%;
   margin: 10px;
-  background: #6ee555;
-  font-family: opensansregular;
+  background: #ffcb05;
   font-weight: 400;
   font-size: 13px;
   cursor: pointer;
@@ -104,8 +100,7 @@
   width: 90%;
   background: none;
   border: none;
-  font-family: opensansregular;
-  color: #6ee555;
+  color: #ffcb05;
   font-style: italic;
   text-align: end;
 
@@ -118,5 +113,5 @@
   width: 30px;
   height: 30px;
   display: inline-block;
-  
+
 }

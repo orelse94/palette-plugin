@@ -82,19 +82,21 @@ var paletteButton = {
             }
 
           } else {
+
             var imgCycle = function (src) {
               var img = document.createElement('img');
               img.crossOrigin = 'Anonymous';
+
               img.onload = function() {
 
                 var colorsArray = colorThief.getPalette(img,8);
 
-                var hexColors = colorsArray.map(function(x){
+                var hexColors = colorsArray
+                .map(function(x){
                   var newColor = new Color(x[0],x[1],x[2]);
 
                   return newColor.toHex();});
                 var paletteObj = {'name': name, 'colors': hexColors,  'isDefault': false, 'sortOrder': 0, 'systemDefault': true};
-
 
                 $http({
                   method: 'POST',
@@ -106,13 +108,33 @@ var paletteButton = {
                   return response;
                 });
                 var dashId = prism.activeDashboard.oid;
-                var updateDashPalette = {'style' : {'name' : name, 'palette' : paletteObj}};
+                var paletteObjForPatch = {'colors': hexColors,  'name': name, 'isDefault': false, 'sortOrder': 0};
+                var updateDashPalette = {'style' : {'name' : name, 'palette' : paletteObjForPatch}};
 
                 $http({
                   method: 'PATCH',
                   url: 'http://localhost:8081/api/v1/dashboards/'+dashId,
                   data: updateDashPalette
                 }).then(function successCallback(response) {
+
+                  // here i should put the palette changes in the client
+                  var redrawWidget = function (palette) {
+                    prism.activeDashboard.style.setPalette(palette, true);
+                    prism.activeDashboard.$dashboard.updateDashboard(prism.activeDashboard, 'style');
+
+                    // update all widgets, because their colors have changed
+
+                    prism.activeDashboard.widgets.toArray()
+                    .forEach(function (widget) {
+                      prism.activeDashboard.$dashboard.updateWidget(widget);
+                    });
+                    prism.activeDashboard.redraw();
+                    if (prism.appstate === 'dashboard' && $$get(prism, 'dashboard.widgets.length') === 0) {
+                      prism.$ngscope.$root.$broadcast('newWidgetRedraw');
+                    }
+                };
+
+                  redrawWidget(paletteObj);
                   window.location.reload();
                   return response;
                 }, function errorCallback(response) {
@@ -128,6 +150,8 @@ var paletteButton = {
 
 
             if (imgUrl) {
+              /// put here the link cross if
+
               imgCycle(imgUrl);
             } else {
 
